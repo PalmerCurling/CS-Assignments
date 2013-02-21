@@ -1,7 +1,13 @@
 public class Scores{
 	public static void main(String[] args){
-
-		int judges = IO.readInt();
+		int judges = 0;
+		do{
+			judges = IO.readInt();
+			if(judges < 3){
+				IO.reportBadInput();
+				continue;
+			}
+		}while(judges < 3);
 		int count = 0;
 		double total = 0;
 		double a = 0;
