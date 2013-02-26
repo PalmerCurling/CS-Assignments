@@ -16,7 +16,7 @@ public class NthPrime{
 				}
 			}
 			if(y == prime){
-				count = count+1;
+				count++;
 			}
 		}
 		IO.outputIntAnswer(prime);

@@ -32,7 +32,7 @@ public class Scores{
 			}
 			total  = total+x;
 			count++;
-		}while(count <= judges-1);
+		}while(count < judges);
 
 		a = total - highest - lowest;
 		b = judges - 2;
