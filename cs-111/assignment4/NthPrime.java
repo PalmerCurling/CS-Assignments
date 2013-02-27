@@ -1,10 +1,12 @@
 public class NthPrime{
 	public static void main(String[] args){
 		int x = IO.readInt();
-		while(x < 1){
+
+		if(x<1)
+		do{
 			IO.reportBadInput();
 			x = IO.readInt();
-		}
+		}while(x<1);
 		int prime = 1;
 		int count = 0;
 		int y;

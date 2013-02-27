@@ -14,13 +14,15 @@ public class TwoSmallest{
 				return;
 			}
 			if(x < lowest || count == 0){
+				second = lowest;
 				lowest = x;
 			}
 			if(count == 1 && x > lowest ){
 				second = x;
 			}
-			if(x < second && x > lowest){
-				second = x;
+			if(count == 1 && x < lowest){
+				second = lowest;
+				lowest = x;
 			}
 
 			count++;		
