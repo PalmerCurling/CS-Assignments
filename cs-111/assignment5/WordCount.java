@@ -7,23 +7,14 @@ public class WordCount{
 		int count = 0;
 
 		for(int i = 0; i < s.length(); i++){
-			if(i == s.length() - 1 && Character.isLetter(s.charAt(i))){
-				l++;
-				if(l >= x){
-					count++;
-					l = 0;
-				}
-			}
-			if(s.charAt(i) == ' '){
-				if(l >= x){
-					count++;
-					l = 0;
-				}else{
-					l = 0;
-				}
-			}
 			if(Character.isLetter(s.charAt(i))){
 				l++;
+			}
+			if(s.charAt(i) == ' ' || i+1 == s.length()){
+				if(l >= x){
+					count++;
+				}
+				l = 0;
 			}
 		}
 		IO.outputIntAnswer(count);
