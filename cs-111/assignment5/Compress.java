@@ -7,24 +7,18 @@ public class Compress{
 			if(i+1 == s.length()){
 				if(count == 1){
 					c = c + s.charAt(i);
-					//System.out.print(s.charAt(i));
 				}else{
-					//System.out.print(count);
-					//System.out.print(s.charAt(i));
 					c = c + count + s.charAt(i);
 					count = 1;
 				}
-					break;
+				break;
 			}
 			if(s.charAt(i) == s.charAt(i+1)){
 				count++;
 			}else{
 				if(count == 1){
-					//System.out.print(s.charAt(i));
 					c = c + s.charAt(i);
 				}else{
-					//System.out.print(count);
-					//System.out.print(s.charAt(i));
 					c = c + count + s.charAt(i);
 					count = 1;
 				}
