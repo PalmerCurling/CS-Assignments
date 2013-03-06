@@ -1,14 +1,17 @@
 public class Compress{
 	public static void main(String[] args){
 		String s = IO.readString();
+		String c = "";
 		int count = 1;
 		for(int i = 0; i < s.length(); i++){
 			if(i+1 == s.length()){
 				if(count == 1){
-					System.out.print(s.charAt(i));
+					c = c + s.charAt(i);
+					//System.out.print(s.charAt(i));
 				}else{
-					System.out.print(count);
-					System.out.print(s.charAt(i));
+					//System.out.print(count);
+					//System.out.print(s.charAt(i));
+					c = c + count + s.charAt(i);
 					count = 1;
 				}
 					break;
@@ -17,14 +20,16 @@ public class Compress{
 				count++;
 			}else{
 				if(count == 1){
-					System.out.print(s.charAt(i));
+					//System.out.print(s.charAt(i));
+					c = c + s.charAt(i);
 				}else{
-					System.out.print(count);
-					System.out.print(s.charAt(i));
+					//System.out.print(count);
+					//System.out.print(s.charAt(i));
+					c = c + count + s.charAt(i);
 					count = 1;
 				}
 			}
 		}
-		System.out.println(" ");
+		IO.outputStringAnswer(c);
 	}
 }
