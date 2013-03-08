@@ -1,0 +1,31 @@
+PigLatin.Java
+
+Input: with
+expected output: ithway
+output: ithway
+
+Input: Eric
+Expected output: ericway
+output: ericway
+
+
+WordCount.java
+
+Input: My boyfriend is stupid, 4
+expected result: 2
+output: 2
+
+input: My boyfriend is stupid, because he couldn't figure out his bugs in the Piglatin.java problem., 7
+expected result: 5
+result: 5
+
+
+
+Compress.java
+input: qtqrstprrrrFSSSOpP
+expected result: qtqrstp4rF3SOpP
+result: qtqrstp4rF3SOpP
+
+input: 1111142421~~~~~zqPPPPP>><
+expected result: 51424215~zq5P2><
+result: 51424215~zq5P2><

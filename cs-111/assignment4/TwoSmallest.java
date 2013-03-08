@@ -13,7 +13,7 @@ public class TwoSmallest{
 				IO.outputDoubleAnswer(second);
 				return;
 			}
-			if(x < lowest || count == 0){
+			if(x <=  lowest || count == 0){
 				second = lowest;
 				lowest = x;
 			}
