@@ -1,19 +1,40 @@
 public class MyInteractiveMovie{
 	public static void main(String[] args){
 		System.out.println("Please open the source code and ensure your sprite names and sizes are set below.");
-		Sprite one = new Sprite("<first file>");
-		one.setSize(0,0);
-		Sprite two = new Sprite("<second file>");
-		two.setSize(0,0);
-		Sprite three = new Sprite("<third file>");
-		three.setSize(0,0);
-		Animation interactive = new Animation(1000,1000);
+
+		System.out.println("please set the size of the background below:");
+		System.out.println("width:");
+		int backw = IO.readInt();
+		System.out.println("height:");
+		int backh = IO.readInt();
+
+		Sprite one = new Sprite("tsukune.png");
+		one.setSize(37,76);
+		Sprite two = new Sprite("moka1.png");
+		two.setSize(37,79);
+		Sprite three = new Sprite("kurumu1.png");
+		three.setSize(25,79);
+
+		one.setPosition(0,0);
+		two.setPosition(80,0);
+		three.setPosition(157,0);
+
+		Animation interactive = new Animation(backw,backh);
 		interactive.setFrameRate(1);
 		interactive.setBackgroundImage("background.jpg");
+		interactive.addSprite(one);
+		interactive.addSprite(two);
+		interactive.addSprite(three);
 
 		boolean loop = true;
+		interactive.frameFinished();
 
 		do{
+
+			int x = 0;
+			int y = 0;
+			int z = 0;
+			int q = 0;
 			int choice;
 			System.out.println("What would you like to do?");
 			System.out.println("(1) Move a Sprite");
@@ -23,7 +44,7 @@ public class MyInteractiveMovie{
 				choice = IO.readInt();
 			}while(choice<1 || choice>2);
 			if(choice == 2){
-				return;
+				System.exit(1);
 			}else{
 				choice = 0;
 				System.out.println("Please select a sprite to move");
@@ -36,13 +57,40 @@ public class MyInteractiveMovie{
 				}while(choice<1 || choice >3);
 			} 
 			if(choice == 1){
-				Menu.Location(one);
+				Menu.Location(one,x,y,z,q,backw,backh);
+				x = one.getXsize();
+				y = one.getYsize();
+				z = one.getXposition();
+				q = one.getYposition();
+				System.out.println("checking for collisions with sprite two");
+				Menu.Collision(one,x,y,z,q,two,backw,backh);
+				System.out.println("checking for collisions with sprite three");
+				Menu.Collision(one,x,y,z,q,three,backw,backh);
+				interactive.frameFinished();
 			}
 			if(choice == 2){
-				Menu.Location(two);
+				Menu.Location(two,x,y,z,q,backw,backh);
+				x = two.getXsize();
+				y = two.getYsize();
+				z = two.getXposition();
+				q = two.getYposition();
+				System.out.println("checking for collisions with sprite one");
+				Menu.Collision(two,x,y,z,q,one,backw,backh);
+				System.out.println("checking for collisions with sprite three");
+				Menu.Collision(two,x,y,z,q,three,backw,backh);
+				interactive.frameFinished();
 			}
 			if(choice == 3){
-				Menu.Location(three);
+				Menu.Location(three,x,y,z,q,backw,backh);
+				x = three.getXsize();
+				y = three.getYsize();
+				z = three.getXposition();
+				q = three.getYposition();
+				System.out.println("checking for collisions with sprite one");
+				Menu.Collision(three,x,y,z,q,one,backw,backh);
+				System.out.println("checking for collisions with sprite two");
+				Menu.Collision(three,x,y,z,q,two,backw,backh);
+				interactive.frameFinished();
 			}
 		}while(loop = true);
 	}
