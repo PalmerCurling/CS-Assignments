@@ -62,9 +62,7 @@ public class MyInteractiveMovie{
 				y = one.getYsize();
 				z = one.getXposition();
 				q = one.getYposition();
-				System.out.println("checking for collisions with sprite two");
 				Menu.Collision(one,x,y,z,q,two,backw,backh);
-				System.out.println("checking for collisions with sprite three");
 				Menu.Collision(one,x,y,z,q,three,backw,backh);
 				interactive.frameFinished();
 			}
@@ -74,9 +72,7 @@ public class MyInteractiveMovie{
 				y = two.getYsize();
 				z = two.getXposition();
 				q = two.getYposition();
-				System.out.println("checking for collisions with sprite one");
 				Menu.Collision(two,x,y,z,q,one,backw,backh);
-				System.out.println("checking for collisions with sprite three");
 				Menu.Collision(two,x,y,z,q,three,backw,backh);
 				interactive.frameFinished();
 			}
@@ -86,9 +82,7 @@ public class MyInteractiveMovie{
 				y = three.getYsize();
 				z = three.getXposition();
 				q = three.getYposition();
-				System.out.println("checking for collisions with sprite one");
 				Menu.Collision(three,x,y,z,q,one,backw,backh);
-				System.out.println("checking for collisions with sprite two");
 				Menu.Collision(three,x,y,z,q,two,backw,backh);
 				interactive.frameFinished();
 			}

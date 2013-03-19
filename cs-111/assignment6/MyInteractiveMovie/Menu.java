@@ -54,11 +54,9 @@ public class Menu{
 		int b = test.getXsize();
 		boolean derp = false;
 		boolean herp = false;
-		System.out.println("checking for x collisions");
 		for(int i = z;i<(z+x);i++){
 			for(int count = a;count<(a+b);count++){
 				if(i==count && !derp){
-					System.out.println("found an x collision");
 					derp = true;
 				}
 			}
@@ -68,11 +66,9 @@ public class Menu{
 		if(derp){
 			a = test.getYposition();
 			b = test.getYsize();
-			System.out.println("checking for y collisions");
 			for(int i = q; i<(q+y);i++){
 				for(int count = a;count<(a+b);count++){
 					if(i==count && !herp){
-						System.out.println("found a y collision");
 						herp = true;
 					}
 				}
