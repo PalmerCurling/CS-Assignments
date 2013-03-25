@@ -1,0 +1,14 @@
+Inputs:
+APY calculator, 5.5, daily
+expected output: 5.65
+output: 5.65
+
+Inputs:
+APY calculator, 5.5, monthly
+expected output: 5.64
+output: 5.64
+
+Inputs:
+Loan payment, 20000, 7.5, 15, biweekly
+expected: 85.49
+output:85.49
