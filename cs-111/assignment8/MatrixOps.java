@@ -1,10 +1,10 @@
 public class MatrixOps{
 	public static double[][] multiply(double[][] matrix1, double[][] matrix2){
-		
+
 		if(matrix1[0].length != matrix2.length){
 			return null;
 		}else{
-			
+
 			int n = matrix1[0].length;
 			int m = matrix1.length;
 			int p = matrix2[0].length;
