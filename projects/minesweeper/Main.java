@@ -16,7 +16,7 @@ public class Main{
 		if(choice == 2){
 			System.exit(1);
 		}else{
-			char[][] board = {{'1','1','2','1','1'},
+			char[][] staticBoard = {{'1','1','2','1','1'},
 				{'1','B','3','B','1'},
 				{'1','2','B','2','1'},
 				{'0','3','B','3','0'},
