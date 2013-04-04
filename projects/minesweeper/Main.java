@@ -13,7 +13,7 @@ public class Main{
 			{'x','x','x','x','x'},
 			{'x','x','x','x','x'}};
 
-		int row, column;
+		int row, column, i, j;
 		boolean loop, flag;
 
 
@@ -36,15 +36,14 @@ public class Main{
 			int[] selection = {row,column};
 			if(flag){
 				dynamicBoard[selection[0]][selection[1]] = 'F';
-			}else{
+			}
 
-				boolean result = PrintBoard.printBoard(staticBoard, selection, dynamicBoard, flag);
-				if(result){
-					System.out.println("you lose!");
-					System.exit(1);
-				}else{
-					System.out.println("you have survived so far!");
-				}
+			boolean result = PrintBoard.printBoard(staticBoard, selection, dynamicBoard, flag);
+			if(result){
+				System.out.println("you lose!");
+				System.exit(1);
+			}else{
+				System.out.println("you have survived so far!");
 			}
 
 		}while(loop = true);
