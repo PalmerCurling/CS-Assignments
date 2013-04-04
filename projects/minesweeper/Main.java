@@ -47,5 +47,6 @@ public class Main{
 			}
 
 		}while(loop = true);
+		//why is this here^^
 	}
 }
