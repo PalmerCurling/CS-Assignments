@@ -1,39 +1,51 @@
 public class Main{
 	public static void main(String[] args){
 
-		System.out.println("Welcome to Java Minesweeper!");
-		System.out.println("Please select an option below:");
-		System.out.println("(1) Play a game of Minesweeper");
-		System.out.println("(2) Quit");
+		char[][] staticBoard = {{'1','1','2','1','1'},
+			{'1','B','3','B','1'},
+			{'1','2','B','2','1'},
+			{'0','3','B','3','0'},
+			{'0','2','B','2','0'}};
 
-		int choice, column, row;
-		boolean loop;
+		char[][] dynamicBoard = {{'x','x','x','x','x'},
+			{'x','x','x','x','x'},
+			{'x','x','x','x','x'},
+			{'x','x','x','x','x'},
+			{'x','x','x','x','x'}};
+
+		int row, column;
+		boolean loop, flag;
+
 
 		do{
-			choice = IO.readInt();
-		}while(choice < 1 || choice > 2);
+			System.out.println("Do you wish to flag a square?");
+			flag = IO.readBoolean();
 
-		if(choice == 2){
-			System.exit(1);
-		}else{
-			char[][] staticBoard = {{'1','1','2','1','1'},
-				{'1','B','3','B','1'},
-				{'1','2','B','2','1'},
-				{'0','3','B','3','0'},
-				{'0','2','B','2','0'}};
-		}
-		do{
-			System.out.println("First, a letter for column, then a number for row");
-			System.out.println("Please select a space you wish to reveal.");
+			System.out.println("First, a # for column, then for row");
+			System.out.println("Please select a square you wish to reveal/flag.");
 			do{
+				System.out.println("Select a column from 1 to 5");
 				column = IO.readInt();
 			}while(column < 1 || column > 5);
-
 			do{
+				System.out.println("Select a row from 1 to 5");
 				row = IO.readInt();
 			}while(row < 1 || row > 5);
+			column = column - 1;
+			row = row - 1;
+			int[] selection = {row,column};
+			if(flag){
+				dynamicBoard[selection[0]][selection[1]] = 'F';
+			}else{
 
-			int[] selection = {column,row};
+				boolean result = PrintBoard.printBoard(staticBoard, selection, dynamicBoard, flag);
+				if(result){
+					System.out.println("you lose!");
+					System.exit(1);
+				}else{
+					System.out.println("you have survived so far!");
+				}
+			}
 
 		}while(loop = true);
 	}
