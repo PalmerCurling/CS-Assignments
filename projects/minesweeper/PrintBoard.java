@@ -1,6 +1,6 @@
 public class PrintBoard{
 	public static boolean printBoard(char[][] staticBoard, int[] choice, char[][] dynamicBoard, boolean flag){
-		
+		//please start adding comments to your code! sometimes it is for me to understand it
 		boolean bomb;
 		int i = 0 , j = 0;
 
