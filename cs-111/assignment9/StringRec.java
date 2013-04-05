@@ -4,8 +4,8 @@ public class StringRec{
 	// (you may declare local variables inside methods)
 
 	public static String decompress(String compressedText){
-	
-		if(compressedText.equals() ""){
+
+		if(compressedText.equals("")){
 			return compressedText;
 		}else{
 			char first = compressedText.charAt(0);
