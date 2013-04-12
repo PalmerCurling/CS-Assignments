@@ -1,19 +1,14 @@
 public class PrintBoard{
-	public static boolean printBoard(char[][] staticBoard, int[] choice, char[][] dynamicBoard, boolean flag){
-<<<<<<< HEAD
-
-=======
-		//please start adding comments to your code! sometimes it is for me to understand it
->>>>>>> cd1f52718a99ecce68fa97e161bc7bd07b97d89f
+	public static boolean printBoard(char[][] staticBoard, int row, int column, char[][] dynamicBoard, boolean flag){
 		boolean bomb;
 		int i = 0 , j = 0;
 
 		if(flag){
 			bomb = false;
 		}else{
-			dynamicBoard = RevealCell.revealCell(staticBoard, dynamicBoard, choice);
+			dynamicBoard = RevealCell.revealCell(staticBoard, dynamicBoard, row, column);
 
-			if(staticBoard[choice[0]][choice[1]] == 'B'){
+			if(staticBoard[row][column] == 'B'){
 				bomb  = true;
 			}else{
 				bomb = false;

@@ -1,17 +1,22 @@
 public class Main{
 	public static void main(String[] args){
 
-		char[][] staticBoard = {{'1','1','2','1','1'},
-			{'1','B','3','B','1'},
-			{'1','2','B','2','1'},
-			{'0','3','B','3','0'},
-			{'0','2','B','2','0'}};
+		char[][] staticBoard =
+			{{' ',' ',' ',' ',' ',' ',' '},
+			{' ','1','1','2','1','1',' '},
+			{' ','1','B','3','B','1',' '},
+			{' ','1','2','B','2','1',' '},
+			{' ','0','3','B','3','0',' '},
+			{' ','0','2','B','2','0',' '},
+			{' ',' ',' ',' ',' ',' ',' '}};
 
-		char[][] dynamicBoard = {{'x','x','x','x','x'},
-			{'x','x','x','x','x'},
-			{'x','x','x','x','x'},
-			{'x','x','x','x','x'},
-			{'x','x','x','x','x'}};
+		char[][] dynamicBoard = {{' ',' ',' ',' ',' ',' ',' '},
+			{' ','x','x','x','x','x',' '},
+			{' ','x','x','x','x','x',' '},
+			{' ','x','x','x','x','x',' '},
+			{' ','x','x','x','x','x',' '},
+			{' ','x','x','x','x','x',' '},
+			{' ',' ',' ',' ',' ',' ',' '}};
 
 		int row, column, i, j;
 		boolean loop, flag;
@@ -31,14 +36,17 @@ public class Main{
 				System.out.println("Select a row from 1 to 5");
 				row = IO.readInt();
 			}while(row < 1 || row > 5);
-			column = column - 1;
-			row = row - 1;
-			int[] selection = {row,column};
+
+			
+			if(dynamicBoard[row][column] != 'x'){
+				System.out.println("This square has already been clicked or flagged; please select a different location");
+				continue;
+			}
 			if(flag){
-				dynamicBoard[selection[0]][selection[1]] = 'F';
+				dynamicBoard[row][column] = 'F';
 			}
 
-			boolean result = PrintBoard.printBoard(staticBoard, selection, dynamicBoard, flag);
+			boolean result = PrintBoard.printBoard(staticBoard, row, column, dynamicBoard, flag);
 			if(result){
 				System.out.println("you lose!");
 				System.exit(1);
@@ -47,6 +55,5 @@ public class Main{
 			}
 
 		}while(loop = true);
-		//why is this here^^
 	}
 }
