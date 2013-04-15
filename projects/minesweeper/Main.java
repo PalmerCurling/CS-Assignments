@@ -2,7 +2,7 @@ public class Main{
 	public static void main(String[] args){
 
 		char[][] staticBoard =
-			{{' ',' ',' ',' ',' ',' ',' '},
+		{{' ',' ',' ',' ',' ',' ',' '},
 			{' ','1','1','2','1','1',' '},
 			{' ','1','B','3','B','1',' '},
 			{' ','1','2','B','2','1',' '},
@@ -37,13 +37,13 @@ public class Main{
 				row = IO.readInt();
 			}while(row < 1 || row > 5);
 
-			
+
 			if(dynamicBoard[row][column] != 'x'){
 				System.out.println("This square has already been clicked or flagged; please select a different location");
 				continue;
 			}
 			if(flag){
-				dynamicBoard[row][column] = 'F';
+				dynamicBoard[row][column] = 'B';
 			}
 
 			boolean result = PrintBoard.printBoard(staticBoard, row, column, dynamicBoard, flag);
@@ -51,9 +51,25 @@ public class Main{
 				System.out.println("you lose!");
 				System.exit(1);
 			}else{
-				System.out.println("you have survived so far!");
+				boolean win = false;
+
+				for(i = 0; i < staticBoard[0].length; i++){
+					for(j = 0; j < staticBoard.length; j++){
+						if(staticBoard[i][j] != dynamicBoard[i][j]){
+							win = false;
+						}else{
+							win = true;
+						}
+					}
+				}
+				if(win){
+					System.out.println("You win!");
+					System.exit(2);
+				}else{
+					System.out.println("you have survived so far!");
+				}
 			}
 
-		}while(loop = true);
+			}while(loop = true);		
 	}
 }
