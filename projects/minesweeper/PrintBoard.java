@@ -8,7 +8,7 @@ public class PrintBoard{
 		}else{
 			dynamicBoard = RevealCell.revealCell(staticBoard, dynamicBoard, row, column);
 
-			if(staticBoard[row][column] == 'B'){
+			if(staticBoard[row][column] == 'F'){
 				bomb  = true;
 			}else{
 				bomb = false;

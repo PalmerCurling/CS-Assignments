@@ -4,10 +4,10 @@ public class Main{
 		char[][] staticBoard =
 		{{' ',' ',' ',' ',' ',' ',' '},
 			{' ','1','1','2','1','1',' '},
-			{' ','1','B','3','B','1',' '},
-			{' ','1','2','B','2','1',' '},
-			{' ','0','3','B','3','0',' '},
-			{' ','0','2','B','2','0',' '},
+			{' ','1','F','3','F','1',' '},
+			{' ','1','2','F','2','1',' '},
+			{' ','0','3','F','3','0',' '},
+			{' ','0','2','F','2','0',' '},
 			{' ',' ',' ',' ',' ',' ',' '}};
 
 		char[][] dynamicBoard = {{' ',' ',' ',' ',' ',' ',' '},
@@ -43,7 +43,7 @@ public class Main{
 				continue;
 			}
 			if(flag){
-				dynamicBoard[row][column] = 'B';
+				dynamicBoard[row][column] = 'F';
 			}
 
 			boolean result = PrintBoard.printBoard(staticBoard, row, column, dynamicBoard, flag);
@@ -51,14 +51,12 @@ public class Main{
 				System.out.println("you lose!");
 				System.exit(1);
 			}else{
-				boolean win = false;
+				boolean win = true;
 
 				for(i = 0; i < staticBoard[0].length; i++){
 					for(j = 0; j < staticBoard.length; j++){
 						if(staticBoard[i][j] != dynamicBoard[i][j]){
 							win = false;
-						}else{
-							win = true;
 						}
 					}
 				}
