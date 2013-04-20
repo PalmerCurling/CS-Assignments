@@ -30,13 +30,13 @@ public class Board{
 
 	public int getHeight(){
 		int height = dynamicBoard[0].length;
-		height = height--;
+		height = height - 1;
 		return height;
 	}
 
 	public int getWidth(){
 		int width = dynamicBoard.length;
-		width = width--;
+		width = width - 1;
 		return width;
 	}
 
