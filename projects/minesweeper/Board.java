@@ -21,6 +21,8 @@ public class Board{
 	public Board(){}
 
 	public boolean isFlagged(int row, int col){
+		row = row + 1;
+		col = col + 1;
 		if(dynamicBoard[row][col] == 'F'){
 			return true;
 		}else{
@@ -30,22 +32,24 @@ public class Board{
 
 	public int getHeight(){
 		int height = dynamicBoard[0].length;
-		height = height - 1;
+		height = height - 2;
 		return height;
 	}
 
 	public int getWidth(){
 		int width = dynamicBoard.length;
-		width = width - 1;
+		width = width - 2;
 		return width;
 	}
 
 	public char getValue(int row, int col){
+		row = row + 1;
+		col = col + 1;
 		char r = dynamicBoard[row][col];
 		return r;
 	}
 
-	public void revealCell(int row, int col){
+	public void revealCellHelper(int row, int col){
 		int cascR, cascC;
 		if(dynamicBoard[row][col] == ' '){
 		}
@@ -57,7 +61,7 @@ public class Board{
 					cascR = row + i;
 					for(j = -1; j < 2; j++){
 						cascC = col + j;
-						revealCell(cascR, cascC);
+						revealCellHelper(cascR, cascC);
 					}
 				}
 			}
@@ -88,11 +92,21 @@ public class Board{
 	}
 
 	public void flagCell(int row, int col){
+		row = row + 1;
+		col = col + 1;
 		dynamicBoard[row][col] = 'F';
 	}
 
 	public void unflagCell(int row, int col){
+		row = row + 1;
+		col = col = 1;
 		dynamicBoard[row][col] = 'x';
+	}
+
+	public void revealCell(int row, int col){
+		row = row + 1;
+		col = col + 1;
+		revealCellHelper(row, col);
 	}
 
 	public static void main(String args[]){
