@@ -50,13 +50,13 @@ public class Board{
 	}
 
 	public void revealCellHelper(int row, int col){
+		int i, j;
 		int cascR, cascC;
 		if(dynamicBoard[row][col] == ' '){
 		}
 		if(dynamicBoard[row][col] == 'x'){
 			dynamicBoard[row][col] = staticBoard[row][col];
 			if(dynamicBoard[row][col] == '0'){
-				int i, j;
 				for(i = -1; i < 2; i++){
 					cascR = row + i;
 					for(j = -1; j < 2; j++){
@@ -66,47 +66,78 @@ public class Board{
 				}
 			}
 		}
-		int i, j;
-		boolean win = true;
-		if(staticBoard[row][col] == 'F'){
-			for(i = 0; i < staticBoard[0].length; i++){
-				for(j = 0; j < staticBoard.length; j++){
-					if(staticBoard[i][j] == 'F'){
-						dynamicBoard[i][j] = 'B';
-					}
-				}
-			}
-			gui.lose("You have lost :(");
-		}else{
-			for(i = 0; i < staticBoard[0].length; i++){
-				for(j = 0; j < staticBoard.length; j++){
-					if(staticBoard[i][j] != dynamicBoard[i][j]){
-						win = false;
-					}
-				}
-			}
-			if(win){
-				gui.win("You have won! :D");
-			}
-		}
+		win(row, col, true);
 	}
 
 	public void flagCell(int row, int col){
 		row = row + 1;
 		col = col + 1;
 		dynamicBoard[row][col] = 'F';
+		win(row, col, false);
 	}
 
 	public void unflagCell(int row, int col){
 		row = row + 1;
 		col = col = 1;
-		dynamicBoard[row][col] = 'x';
+		if(Character.isDigit(dynamicBoard[row][col])){
+		}else{
+			dynamicBoard[row][col] = 'x';
+		}
 	}
 
 	public void revealCell(int row, int col){
 		row = row + 1;
 		col = col + 1;
+		int i, j;
+		if(Character.isDigit(dynamicBoard[row][col])){
+			int count = 0;
+			int extended = (int) dynamicBoard[row][col] - 48;
+			for(i = -1; i < 2; i++){
+				for(j = -1; j < 2; j++){
+					if(dynamicBoard[row + i][col + j] == 'F'){
+						count++;
+					}
+				}
+			}
+			if(count == extended){
+				for(i = -1; i < 2; i++){
+					for(j = -1; j < 2; j++){
+						if(dynamicBoard[row + i][col + j] == 'F'){
+						}else{
+							revealCellHelper(row + i, col + j);
+						}
+					}
+				}
+			}	
+		}
 		revealCellHelper(row, col);
+	}
+
+	public void win(int row, int col, boolean reveal){
+		int i, j;
+		boolean win = true;
+		if(reveal){
+			if(staticBoard[row][col] == 'F'){
+				for(i = 0; i < staticBoard[0].length; i++){
+					for(j = 0; j < staticBoard.length; j++){
+						if(staticBoard[i][j] == 'F'){
+							dynamicBoard[i][j] = 'B';
+						}
+					}
+				}
+				gui.lose("You have lost :(");
+			}
+		}
+		for(i = 0; i < staticBoard[0].length; i++){
+			for(j = 0; j < staticBoard.length; j++){
+				if(staticBoard[i][j] != dynamicBoard[i][j]){
+					win = false;
+				}
+			}
+		}
+		if(win){
+			gui.win("You have won! :D");
+		}
 	}
 
 	public static void main(String args[]){
