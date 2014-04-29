@@ -1,0 +1,34 @@
+Milestone 1:
+Though I play minesweeper a lot, writing a flow chart of the game is surpisingly difficult. It's a lot more complicated than I realized.
+
+Milestone 2:
+Designing a text based version of minesweeper isn't complicated. It is pretty easy to get the array to print, and design a system to allow the user to interact with the board.
+
+*After meeting with Billy, I realize I didn't include a deflag method. Not a big deal, as its just a few lines to change the flag back to an unmarked square.
+
+Milestone 4:
+All attempts to design a check to prevent the game from trying to interact with a value of the array that doesn't exist fail. Instead, after googling about how Microsoft implements cascading reveals, I have found their array has a buffer row + column all the way around the board that simply is not presented to the user. Adding the buffer row and column to the board has solved the problem of the cascading reveal.
+
+Milestone 5:
+Classifying the program was not complicated; most of the work at this point was copy-pasting my initial code into the single class format, and relaying the location of the arrays so the entire program could see them and interact with them as needed. The border area of spaces is visible. I have figured out how to remove the last row and column, but have not yet had the chance to ask Billy how to remove the other border row and column.
+
+Milestone 6:
+After talking to Billy in recitation, I have implemented a helper method that will only display the squares of significance, and hide the spaces.
+
+As my enhancment for my project, i have implemented assissted reveal; if a revealed square has flags touching it equal to the number shown on the square, and you click on the square, any unrevealed squares will be revealed.
+
+
+
+Method analysis:
+
+	isFlagged, getWidth, getHeight, getValue, flagCell, unflagCell:
+		These methods are O(1) as each of these are linear methods; there is no loop, just 3-5 operations.
+
+	win:
+		Due to my using a static board, this is an O(1) function. If i had implemented variable board size, it would be and O(N^2) function.
+
+	revealCell:
+		this function also only runs based on constants; therefore it is also an O(1) function.
+
+	revealCellHelper:
+		This is a recursive function in the case of cascading reveals; a single iteration of it, however, is O(1) as again it simply runs against a set of constants.
